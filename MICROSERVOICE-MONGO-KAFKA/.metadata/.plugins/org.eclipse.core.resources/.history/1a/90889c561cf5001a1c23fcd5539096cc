@@ -1,0 +1,33 @@
+package com.nishant.configuration;
+
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+
+@Configuration
+@EnableConfigurationProperties(MongoProperties.class)
+public class MongoConfiguration {
+	
+	//mongodb://localhost:27017
+	private Sting connectionString = "";
+	
+	private MongoProperties mongoProperties;
+	
+	public MongoConfiguration(MongoProperties mongoProperties) {
+		this.mongoProperties = mongoProperties;
+	}
+	
+	@Bean
+	public MongoTemplate carMongoTemplate() {
+		return new MongoTemplate(mongoClient(), "");
+	}
+	
+	@Bean
+	public MongoClient mongoClient() {
+		return MongoClients.create("");
+	}
+}

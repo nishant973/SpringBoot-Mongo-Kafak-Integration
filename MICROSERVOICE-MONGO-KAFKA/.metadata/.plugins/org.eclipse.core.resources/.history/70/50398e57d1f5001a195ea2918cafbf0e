@@ -1,0 +1,2 @@
+spring.kafka.consumer.group-id="spring-kafka"
+server.port=8082

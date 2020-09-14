@@ -1,0 +1,30 @@
+package com.nishant.configuration;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+
+@Configuration
+@EnableConfigurationProperties(MongoProperties.class)
+public class MongoConfiguration {
+
+	@Autowired
+	private MongoProperties mongoProperties;
+	
+	public MongoConfiguration(MongoProperties mongoProperties) {
+		this.mongoProperties = mongoProperties;
+	}
+	
+	public MongoTemplate carMongoTemplate() {
+		return new MongoTemplate(mongoClient, mongoProperties.get);
+	}
+	
+	@Bean
+	public MongoClient mongoClient() {
+		return MongoClients.create("");
+	}
+}

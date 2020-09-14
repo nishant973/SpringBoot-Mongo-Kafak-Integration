@@ -1,0 +1,7 @@
+package com.nishant.events;
+
+import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
+
+public class CascadeSaveEventListener extends AbstractMongoEventListener<Object>{
+
+}

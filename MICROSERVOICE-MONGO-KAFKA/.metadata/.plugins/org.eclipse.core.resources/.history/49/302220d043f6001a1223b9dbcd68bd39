@@ -1,0 +1,6 @@
+mongodb.host=localhost
+mongodb.port=27017
+mongodb.database=car
+mongodb.connectionstring=mongodb://localhost:27017
+kafka.bootstrap.server=localhost:2081
+kafka-topic=test

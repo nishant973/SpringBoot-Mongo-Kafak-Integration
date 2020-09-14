@@ -1,0 +1,5 @@
+package com.nishant.model;
+
+public class RawMaterialWrapper {
+
+}
