@@ -1,0 +1,30 @@
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties --- start zookeeper on 2181
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties --- start Kafka
+
+Topic : A topic is a feed name to which records are published . Topics in kafka are laways multi-subscriber.
+	For each topi , kafka cluster maintains a partition log.
+
+Partitions : A topic may have many partitions so that it can handle an aribitrary amount of data.
+
+Partition Offset : Each partiton message has a unique sequence ID called an offset.
+
+Replicas : Backup of partitons . Used to prevent data loss . You can define replica factor and that number of replica
+	   will be created and place it in cluster to avaialbe for any operations.
+
+Brokers : Systems responsible for maintaining data . It's stateless , so they use zookeeper for maintaining their cluster state.
+	  Each broker may have zero or more partitions per topic.
+
+ZooKeeper : Used for managing and coordinating Kafka brokers. Used to notify producers and consumers if any brokers goes down or come up .
+
+Create A Topic : 
+.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic TestTopic
+
+List Topics : 
+.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181
+
+Create Producer :
+.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic TestTopic
+
+Cerate Consumer :
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TestTopic --from-beginning
